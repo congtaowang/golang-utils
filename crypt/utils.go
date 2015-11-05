@@ -11,30 +11,30 @@ const(
 )
 
 // 
-func Encrypt(method int,original string,key[]byte)(result string,err error) {
+func Encrypt(method int,original string,key string)(result string,err error) {
 	
 	err		= nil
 	var data []byte
 	switch method {
-		case DES:		data,err = DesEncrypt([]byte(original),key)
-		case TRIPLEDES:data,err = TripleDesEncrypt([]byte(original),key)
-		case AES:		data,err = AesEncrypt([]byte(original),key)
+		case DES:		data,err = DesEncrypt([]byte(original),[]byte(key))
+		case TRIPLEDES:data,err = TripleDesEncrypt([]byte(original),[]byte(key))
+		case AES:		data,err = AesEncrypt([]byte(original),[]byte(key))
 	}
 	
 	result = base64.StdEncoding.EncodeToString(data)
 	return
 }
 
-func Decrypt(method int,encrypted string,key[]byte)(result string,err error) {
+func Decrypt(method int,encrypted string,key string)(result string,err error) {
 	
 	data,err := base64.StdEncoding.DecodeString(encrypted)
 	if err!=nil {
 		return
 	}
 	switch method {
-		case DES:		data,err = DesDecrypt(data,key)
-		case TRIPLEDES:data,err = TripleDesDecrypt(data,key)
-		case AES:		data,err = AesDecrypt(data,key)
+		case DES:		data,err = DesDecrypt(data,[]byte(key))
+		case TRIPLEDES:data,err = TripleDesDecrypt(data,[]byte(key))
+		case AES:		data,err = AesDecrypt(data,[]byte(key))
 	}
 	return string(data),err
 }

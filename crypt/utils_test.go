@@ -5,11 +5,11 @@ import (
 	"testing"
 )
 
-var desKey  	[]byte = []byte("12345678")//must be 8bits
-var des3Key  	[]byte = []byte("123456781234567812345678")//must be 24bits
-var aesKey1 	[]byte = []byte("1234567812345678")//must be 16bits
-var aesKey2 	[]byte = []byte("123456781234567812345678")//must be 24bits
-var aesKey3 	[]byte = []byte("12345678123456781234567812345678")//must be 32bits
+var desKey  	string = string("12345678")//must be 8bits
+var des3Key  	string = string("123456781234567812345678")//must be 24bits
+var aesKey1 	string = string("1234567812345678")//must be 16bits
+var aesKey2 	string = string("123456781234567812345678")//must be 24bits
+var aesKey3 	string = string("12345678123456781234567812345678")//must be 32bits
 
 var originalData string = "Im's a string waiting for encrypt"
 
